@@ -144,14 +144,14 @@ body{
 }
 
 .thumbnail-image .games-description{
-    margin-top:10%;
+    margin-top:20%;
     min-height:300px;
     width:35%;
     border:2px solid black;
 }
 
 .thumbnail-image .games-product{
-    margin-top:10%;
+    margin-top:20%;
     background-color:var(--theme);
     min-height:80vh;
     width:65%;
