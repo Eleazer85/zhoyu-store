@@ -1,6 +1,11 @@
 :root{
     --theme:#b90006;
 }
+body{
+    background-image:linear-gradient(white,#d9d9d9,#ECD1D1,#ffc9c9);
+    background-repeat: no-repeat;
+
+  }
 .bg-theme{background-color:var(--theme) !important;}
 .nav-spacing{margin-left:13% !important;}
 
@@ -17,6 +22,7 @@
 /*Shop*/
 .thumbnail-image{
     height:60vh;
+    width:100%;
     background-image:
     linear-gradient(transparent 50%,white),
     url('/web-top-up/Images/mobile-legend-thumbnail.png') !important;
@@ -135,4 +141,35 @@
     width:90%;
     min-height:700px;
     margin:25px auto 0 auto; /*top right bottom left*/
+}
+
+.thumbnail-image .games-description{
+    margin-top:10%;
+    min-height:300px;
+    width:35%;
+    border:2px solid black;
+}
+
+.thumbnail-image .games-product{
+    margin-top:10%;
+    background-color:var(--theme);
+    min-height:80vh;
+    width:65%;
+    border:2px solid black;
+}
+
+.thumbnail-image .games-product .catalogue-container{
+    min-height:100px;
+    margin:0 auto;
+    width:95%;
+    display:flex;
+    justify-content: space-around;
+}
+
+.thumbnail-image .games-product .catalogue-container .catalogue{
+    display:flex;
+    align-items: center;;
+    width:32%;
+    height:100%;
+    background-color: #f87c7c;
 }

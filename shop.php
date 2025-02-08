@@ -46,8 +46,92 @@
       </div>
     </div>
   </nav>
-<div class="container-fluid thumbnail-image d-flex justify-content-around">
+<div class="thumbnail-image d-flex justify-content-around">
   <div class="games-description">
+  </div>
+  <div class="games-product">
+  <!--1st three-->
+    <div class="catalogue-container mt-3">
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+    </div>
+      <!--2nd three-->
+    <div class="catalogue-container mt-3">
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+    </div>
+      <!--3rd three-->
+    <div class="catalogue-container mt-3">
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+    </div>
+      <!--4th three-->
+    <div class="catalogue-container mt-3">
+      <div class="catalogue">
+        <img src="Images/Game-Money/1.png" width="100" height="100">
+        <div class="catalogue-price">
+          <h4>xxx Diamond</h4>
+          <h4>Rp. xxx</h4>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
