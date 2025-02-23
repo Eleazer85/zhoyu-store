@@ -1,175 +1,277 @@
-:root{
-    --theme:#b90006;
+:root {
+    --theme: #b90006; /* Define the primary theme color */
 }
-body{
-    background-image:linear-gradient(white,#d9d9d9,#ECD1D1,#ffc9c9);
-    background-repeat: no-repeat;
 
-  }
-.bg-theme{background-color:var(--theme) !important;}
-.nav-spacing{margin-left:13% !important;}
+/* Background color for themed elements */
+.bg-theme { background-color: var(--theme) !important; }
 
+/* Adjust left margin for navigation bar spacing */
+.nav-spacing { margin-left: 13% !important; }
+
+/* Custom styling for navbar toggler icon */
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
-#search-button{
-    background-color: orange;
-}
+
+/* Custom background color for search button */
+#search-button { background-color: orange; }
+
+/* Dropdown item hover effect */
 .dropdown-menu .dropdown-item:hover {
     background-color: black;
     color: white;
-  }  
-/*Shop*/
-.thumbnail-image{
-    height:60vh;
-    width:100%;
-    background-image:
-    linear-gradient(transparent 50%,white),
-    url('/web-top-up/Images/mobile-legend-thumbnail.png') !important;
-    background-size: cover;
-    background-repeat:no-repeat;
-    background-position: center;
-    position:absolute;
-}
+}  
 
-/*Home*/
-#poster{
+/* Home Section */
+#poster {
     display: flex;
     justify-content: center;
-    width:100%;
-    max-height:75vh;
-}
-#poster img{
-    width:75%;
+    width: 100%;
+    max-height: 75vh; /* Limit max height for poster */
 }
 
-@media(max-width:560px){
-    #poster img{
-        width:90%;
+/* Image inside poster */
+#poster img {
+    width: 75%;
+}
+
+/* Responsive image size for smaller screens */
+@media (max-width: 560px) {
+    #poster img {
+        width: 90%;
     }
 }
 
-.games-list{
-    width:80%;
-    margin:0 auto;
-    display:flex;
+/* Games List Section */
+.games-list {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
 }
-.category{font-family: "Slackey"}
 
-.container-fluid .games-container{
-    width:80%;
-    min-height:850px;
-    margin:0 auto;
-    display:grid;
+/* Set font for category text */
+.category { font-family: "Slackey"; }
+
+/* Game container grid layout */
+.container-fluid .games-container {
+    width: 80%;
+    min-height: 1275px;
+    margin: 0 auto;
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap:25px;
-    grid-auto-flow:row;
+    gap: 25px;
+    grid-auto-flow: row;
 }
-.container-fluid .games-container .games{
-    background-size:cover;
+
+/* Individual game item styling */
+.container-fluid .games-container .games {
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid black;
-    grid-row:span 1;
-    grid-column:span 1;
-    border-radius:20px;
+    grid-row: span 1;
+    grid-column: span 1;
+    border-radius: 20px;
 }
 
-@media(max-width:1400px){
-    .container-fluid .games-container{
-        min-height:750px;
+/* Adjustments for different screen sizes */
+@media (max-width: 1400px) {
+    .container-fluid .games-container {
+        min-height: 1125px;
     }
 }
 
-@media(max-width:1200px){
-    .container-fluid .games-container{
-        min-height:700px;
+@media (max-width: 1200px) {
+    .container-fluid .games-container {
+        min-height: 1050px;
     }
 }
 
-@media(max-width:1100px){
-    .container-fluid .games-container{
-        min-height:850px;
-        column-gap:20px;
+@media (max-width: 1100px) {
+    .container-fluid .games-container {
+        min-height: 1275px;
+        column-gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr; /* Reduce columns to 3 */
+    }
+}
+
+@media (max-width: 730px) {
+    .container-fluid .games-container {
+        min-height: 1050px;
+        row-gap: 25px;
+        column-gap: 30px;
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-@media (max-width:730px){
-    .container-fluid .games-container{
-        min-height:700px;
-        row-gap:25px;
-        column-gap:30px;
+@media (max-width: 580px) {
+    .container-fluid .games-container {
+        width: 90%;
+        min-height: 900px;
+        row-gap: 25px;
+        column-gap: 10px;
         grid-template-columns: 1fr 1fr 1fr;
     }
-}
-
-@media (max-width:580px){
-    .container-fluid .games-container{
-        width:90%;
-        min-height:600px;
-        row-gap:25px;
-        column-gap:10px;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-    .games-list{
-        width:90%;
-        margin:0 auto;
-        display:flex;
+    .games-list {
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
         align-items: center;
     }
 }
 
-@media (max-width:460px){
-    .container-fluid .games-container{
-        width:100%;
-        min-height:600px;
-        row-gap:25px;
-        column-gap:10px;
+@media (max-width: 460px) {
+    .container-fluid .games-container {
+        width: 100%;
+        min-height: 900px;
+        row-gap: 25px;
+        column-gap: 10px;
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-.container-fluid .games-container .games a .redirect{
-    width:100%;
-    height:100%;
+/* Full clickable area inside game containers */
+.container-fluid .games-container .games a .redirect {
+    width: 100%;
+    height: 100%;
 }
 
-.other-games{
+/*
+    --SHOP PAGE--
+    Thumbnail-image:
+    - Acts as the background container for the game store.
+    - Displays a background image with a gradient overlay.
+    - Centers child elements using flexbox.
+*/
+.thumbnail-image {
+    display: flex;
+    justify-content: space-around;
+    background-image:
+        linear-gradient(transparent 20%, white),
+        url('Images/background-image/mobile-legend-thumbnail.png') !important;
+    background-size: cover;
+    height: 400px; /* Background image height */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* 
+    Games description:
+    - Themed box with rounded corners.
+    - Positioned within the thumbnail-image container.
+*/
+.thumbnail-image .games-description {
     background-color: var(--theme);
-    width:90%;
-    min-height:700px;
-    margin:25px auto 0 auto; /*top right bottom left*/
+    border-radius: 30px;
+    margin-top: 7%;
+    max-height: 500px;
+    min-height: 300px;
+    width: 35%;
+    border: 2px solid black;
 }
 
-.thumbnail-image .games-description{
-    margin-top:20%;
-    min-height:300px;
-    width:35%;
-    border:2px solid black;
+/* 
+    Main catalogue container:
+    - Houses the game product listings.
+*/
+.thumbnail-image .main-catalogue-container {
+    margin-top: 7%;
+    width: 50%;
 }
 
-.thumbnail-image .games-product{
-    margin-top:20%;
-    background-color:var(--theme);
-    min-height:80vh;
-    width:65%;
-    border:2px solid black;
+@media(max-width:900px){
+    .thumbnail-image {
+       flex-direction: column;
+       align-items: center;
+    }
+
+    .thumbnail-image .games-description{
+        margin-top:90vh;
+        width:95%;
+    }
+
+    .thumbnail-image .main-catalogue-container{
+        width:95%;
+    }
 }
 
-.thumbnail-image .games-product .catalogue-container{
-    min-height:100px;
-    margin:0 auto;
-    width:95%;
-    display:flex;
+/* 
+    Games-product:
+    - Background color matches the theme.
+    - Uses flexbox for alignment and spacing.
+*/
+.thumbnail-image .main-catalogue-container .games-product {
+    background-color: var(--theme);
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* 
+    Catalogue-container:
+    - Holds individual game product listings.
+    - Uses flexbox for spacing and alignment.
+*/
+.thumbnail-image .main-catalogue-container .games-product .catalogue-container {
+    min-height: 80px;
+    width: 95%;
+    display: flex;
     justify-content: space-around;
 }
 
-.thumbnail-image .games-product .catalogue-container .catalogue{
-    display:flex;
-    align-items: center;;
-    width:32%;
-    height:100%;
+/* 
+    Catalogue item:
+    - Contains product images and pricing details.
+    - Styled with rounded corners and a background color.
+*/
+.thumbnail-image .main-catalogue-container .games-product .catalogue-container .catalogue {
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    width: 32%;
     background-color: #f87c7c;
+}
+
+/* 
+    Payment section:
+    - Displays payment options.
+    - Styled with a different background color.
+*/
+
+.thumbnail-image .main-catalogue-container .games-product .payment-container {
+    min-height: 80px;
+    width: 95%;
+}
+
+.thumbnail-image .main-catalogue-container .games-product .payment-container .payment {
+    border-radius: 10px;
+    width: 100%;
+    background-color: #f87c7c;
+}
+
+/* 
+    Payment price details:
+    - Highlights the price information inside the payment section.
+*/
+.thumbnail-image .main-catalogue-container .games-product .payment-container .payment .payment-method {
+    width: 100%;
+}
+
+/* Ensure that the grid is only applied when visible */
+.thumbnail-image .main-catalogue-container .games-product .payment-container .payment .payment-method .payment-list {
+    margin:0 auto;
+    width:95%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:10px;
+}
+
+.thumbnail-image .main-catalogue-container .games-product .payment-container .payment .payment-method .payment-list .pay {
+    grid-column:span 1;
+    background-color: white;
 }

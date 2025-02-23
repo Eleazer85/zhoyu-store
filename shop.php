@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-theme">
     <div class="container-fluid">
-      <a class="navbar-brand" href="https://localhost/web-top-up"><img src="Images/logo2.png" width="70" height=50""></a>
+      <a class="navbar-brand" href="https://localhost/web-top-up"><img src="Images/logo2.png" width="70" height="50"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -46,94 +46,165 @@
       </div>
     </div>
   </nav>
-<div class="thumbnail-image d-flex justify-content-around">
+<!-- 
+    Thumbnail container that displays a background image.
+    It contains the game description and the main catalogue section.
+-->
+<div class="thumbnail-image">
+  
+  <!-- 
+      Game description box with a themed background color.
+      Positioned inside the thumbnail container.
+  -->
   <div class="games-description">
+    <!-- Description goes here -->
   </div>
-  <div class="games-product">
-  <!--1st three-->
-    <div class="catalogue-container mt-3">
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
+
+  <!-- 
+      Main catalogue container that holds the game product listings.
+  -->
+  <div class="main-catalogue-container">
+
+    <!-- 
+        Games-product container that organizes the available game items.
+        Uses flexbox to center and align elements.
+    -->
+    <div class="games-product">
+
+      <!-- First row of game product listings -->
+      <div class="catalogue-container mt-3">
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
+        </div>
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
+        </div>
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
         </div>
       </div>
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
+
+      <!-- Second row of game product listings -->
+      <div class="catalogue-container mt-3">
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
+        </div>
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
+        </div>
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
         </div>
       </div>
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
+
+      <!-- Third row of game product listings -->
+      <div class="catalogue-container mt-3">
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
+        </div>
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
+        </div>
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
         </div>
       </div>
-    </div>
-      <!--2nd three-->
-    <div class="catalogue-container mt-3">
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
+
+      <!-- Fourth row with a single game product listing -->
+      <div class="catalogue-container mt-3 mb-3">
+        <div class="catalogue">
+          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <div class="catalogue-price">
+            <h6>xxx Diamond</h6>
+            <h6>Rp. xxx</h6>
+          </div>
         </div>
       </div>
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
+
+    </div> <!-- End of games-product -->
+
+    <!-- 
+        Payment section inside games-product container.
+        Includes a collapsible payment option.
+    -->
+    <!-- 1. Bank Transfer -->
+    <div class="games-product mt-5 pb-3 mb-5">
+      
+      <div class="payment-container mt-3">
+        
+        <div class="payment m-auto">
+          <div data-bs-toggle="collapse" data-bs-target="#transfer-bank" class="pt-2 pb-2 ms-3 d-flex justify-content-between" style="width:95%;">
+            <h3>Transfer Bank</h3>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
+            </svg>
+          </div>
+
+          <!-- Collapsible section containing pricing details -->
+          <div class="payment-method collapse" id="transfer-bank">
+            <div class="payment-list">
+              <div class="pay">
+                <h2>Test</h2>
+              </div>
+              <div class="pay">
+                <h2>Test</h2>
+              </div>
+              <div class="pay">
+                <h2>Test</h2>
+              </div>
+              <div class="pay">
+                <h2>Test</h2>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
-        </div>
-      </div>
-    </div>
-      <!--3rd three-->
-    <div class="catalogue-container mt-3">
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
-        </div>
-      </div>
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
-        </div>
-      </div>
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
-        </div>
-      </div>
-    </div>
-      <!--4th three-->
-    <div class="catalogue-container mt-3">
-      <div class="catalogue">
-        <img src="Images/Game-Money/1.png" width="100" height="100">
-        <div class="catalogue-price">
-          <h4>xxx Diamond</h4>
-          <h4>Rp. xxx</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+
+      </div> <!-- End of payment-container -->
+
+    </div> <!-- End of games-product -->
+
+  </div> <!-- End of main-catalogue-container -->
+
+</div> <!-- End of thumbnail-image -->
+
+<br><br>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
