@@ -74,21 +74,21 @@
       <!-- First row of game product listings -->
       <div class="catalogue-container mt-3">
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
@@ -99,21 +99,21 @@
       <!-- Second row of game product listings -->
       <div class="catalogue-container mt-3">
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
@@ -124,21 +124,21 @@
       <!-- Third row of game product listings -->
       <div class="catalogue-container mt-3">
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
@@ -149,7 +149,7 @@
       <!-- Fourth row with a single game product listing -->
       <div class="catalogue-container mt-3 mb-3">
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" width="60" height="60">
+          <img src="Images/Game-Money/1.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
@@ -204,7 +204,6 @@
 
 </div> <!-- End of thumbnail-image -->
 
-<br><br>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
