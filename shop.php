@@ -54,8 +54,8 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
     $connect = mysqli_connect("localhost","root","","web-top-up");
-    $query = mysqli_query($connect,"SELECT * FROM `Gambar-thumbnail` WHERE Game_terkait = '".$_GET['games']."'");
-    while($row = mysqli_fetch_array($query)){
+    $thumbnail_query = mysqli_query($connect,"SELECT * FROM `Gambar-thumbnail` WHERE Game_terkait = '".$_GET['games']."'");
+    while($row = mysqli_fetch_array($thumbnail_query)){
       $gambar = $row["Gambar"];
     };
   ?>
@@ -86,48 +86,18 @@
       <!-- First row of game product listings -->
       <div class="w-100 mt-3"><h3 class="text-light ms-3"> Region Indonesia </h3></div>
       <div class="catalogue-container  pb-3">
+        <?php 
+        $catalogue_query = mysqli_query($connect,"SELECT * FROM `Katalog` WHERE Game_terkait = '".$_GET['games']."' ");
+        while ($row = mysqli_fetch_array($catalogue_query)):
+        ?>
         <div class="catalogue">
           <img src="Images/Game-Money/2.png" class="catalogue-image">
           <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
+            <h6><?php echo $row['Nominal']." ".$row['Curency']?></h6>
+            <h6>Rp. <?php echo $row['Harga'] ?></h6>
           </div>
         </div>
-        <div class="catalogue">
-          <img src="Images/Game-Money/2.png" class="catalogue-image">
-          <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
-          </div>
-        </div>
-        <div class="catalogue">
-          <img src="Images/Game-Money/2.png" class="catalogue-image">
-          <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
-          </div>
-        </div>
-        <div class="catalogue">
-          <img src="Images/Game-Money/2.png" class="catalogue-image">
-          <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
-          </div>
-        </div>
-        <div class="catalogue">
-          <img src="Images/Game-Money/2.png" class="catalogue-image">
-          <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
-          </div>
-        </div>
-        <div class="catalogue">
-          <img src="Images/Game-Money/2.png" class="catalogue-image">
-          <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
-          </div>
-        </div>
+        <?php endwhile; ?>
       </div>
 
     </div> <!-- End of games-product -->
