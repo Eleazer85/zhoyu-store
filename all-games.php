@@ -4,7 +4,7 @@
     while($row = mysqli_fetch_array($query)):
     ?>
     <div class="games" style="background-image:url(<?php echo $row['Gambar-game'] ?>)">
-      <a href="shop?games=mobile-legend">
+      <a href="shop?games=<?php echo $row["Game_terkait"]?>">
         <div class="redirect">
         </div>
       </a>
