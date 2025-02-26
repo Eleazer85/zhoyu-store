@@ -204,8 +204,8 @@
 .thumbnail-image .main-catalogue-container .games-product .catalogue-container {
     min-height: 80px;
     width: 95%;
-    display: flex;
-    justify-content: space-around;
+    /* display: flex;
+    justify-content: space-around; */
 }
 
 /* 
