@@ -50,7 +50,19 @@
     Thumbnail container that displays a background image.
     It contains the game description and the main catalogue section.
 -->
-<div class="thumbnail-image">
+  <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    $connect = mysqli_connect("localhost","root","","web-top-up");
+    $query = mysqli_query($connect,"SELECT * FROM `Gambar-thumbnail` WHERE Game_terkait = '".$_GET['games']."'");
+    while($row = mysqli_fetch_array($query)){
+      $gambar = $row["Gambar"];
+    };
+  ?>
+<div class="thumbnail-image" style="background-image:  
+      linear-gradient(transparent 20%, white),
+      url('<?php echo $gambar ?>') !important;
+    ">
   
   <!-- 
       Game description box with a themed background color.
@@ -72,84 +84,45 @@
     <div class="games-product">
 
       <!-- First row of game product listings -->
-      <div class="catalogue-container mt-3">
+      <div class="w-100 mt-3"><h3 class="text-light ms-3"> Region Indonesia </h3></div>
+      <div class="catalogue-container  pb-3">
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
+          <img src="Images/Game-Money/2.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
+          <img src="Images/Game-Money/2.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
-          <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
-          </div>
-        </div>
-      </div>
-
-      <!-- Second row of game product listings -->
-      <div class="catalogue-container mt-3">
-        <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
+          <img src="Images/Game-Money/2.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
+          <img src="Images/Game-Money/2.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
-          <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
-          </div>
-        </div>
-      </div>
-
-      <!-- Third row of game product listings -->
-      <div class="catalogue-container mt-3">
-        <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
+          <img src="Images/Game-Money/2.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>
           </div>
         </div>
         <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
-          <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
-          </div>
-        </div>
-        <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
-          <div class="catalogue-price">
-            <h6>xxx Diamond</h6>
-            <h6>Rp. xxx</h6>
-          </div>
-        </div>
-      </div>
-
-      <!-- Fourth row with a single game product listing -->
-      <div class="catalogue-container mt-3 mb-3">
-        <div class="catalogue">
-          <img src="Images/Game-Money/1.png" class="catalogue-image">
+          <img src="Images/Game-Money/2.png" class="catalogue-image">
           <div class="catalogue-price">
             <h6>xxx Diamond</h6>
             <h6>Rp. xxx</h6>

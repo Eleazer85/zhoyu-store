@@ -147,9 +147,6 @@
 .thumbnail-image {
     display: flex;
     justify-content: space-around;
-    background-image:
-        linear-gradient(transparent 20%, white),
-        url('Images/background-image/mobile-legend-thumbnail.png') !important;
     background-size: cover;
     height: 400px; /* Background image height */
     background-repeat: no-repeat;
@@ -204,8 +201,9 @@
 .thumbnail-image .main-catalogue-container .games-product .catalogue-container {
     min-height: 80px;
     width: 95%;
-    /* display: flex;
-    justify-content: space-around; */
+    display: grid;
+    gap:15px;
+    grid-template-columns:repeat(3,1fr);
 }
 
 /* 
@@ -214,10 +212,10 @@
     - Styled with rounded corners and a background color.
 */
 .thumbnail-image .main-catalogue-container .games-product .catalogue-container .catalogue {
+    grid-column:span 1;
     border-radius: 15px;
     display: flex;
     align-items: center;
-    width: 32%;
     background-color: #f87c7c;
 }
 
