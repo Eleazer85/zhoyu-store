@@ -144,7 +144,7 @@
       </div> <!-- End of payment-container -->
 
     </div> <!-- End of games-product -->
-
+          <button class="d-flex justify-content-center align-items-center pesan ps-5 pe-5 m-auto"><p class="text-light">Pesan Sekarang!</p></button>
   </div> <!-- End of main-catalogue-container -->
 
 </div> <!-- End of thumbnail-image -->
