@@ -120,34 +120,27 @@
       
       <div class="payment-container mt-3">
         
-        <div class="payment m-auto">
-          <div data-bs-toggle="collapse" data-bs-target="#transfer-bank" class="pt-2 pb-2 ms-3 d-flex justify-content-between" style="width:95%;">
-            <h3>Transfer Bank</h3>
+      <div class="payment m-auto">
+          <div data-bs-toggle="collapse" data-bs-target="#payment-method" class="pt-2 pb-2 ms-3 d-flex justify-content-between" style="width:95%;">
+            <h3>  Payment Method</h3>
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
               <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"/>
             </svg>
           </div>
 
           <!-- Collapsible section containing pricing details -->
-          <div class="payment-method collapse" id="transfer-bank">
+          <div class="payment-method collapse" id="payment-method">
             <div class="payment-list">
               <div class="pay">
-                <h2>Test</h2>
+                <img src="Images/qris.png" class="pembayaran">
               </div>
               <div class="pay">
-                <h2>Test</h2>
+                <img src="Images/BCA.png" class="pembayaran">
               </div>
-              <div class="pay">
-                <h2>Test</h2>
-              </div>
-              <div class="pay">
-                <h2>Test</h2>
               </div>
             </div>
           </div>
-
-        </div>
-
+          
       </div> <!-- End of payment-container -->
 
     </div> <!-- End of games-product -->
