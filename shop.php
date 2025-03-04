@@ -51,8 +51,8 @@
     It contains the game description and the main catalogue section.
 -->
   <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
+    // error_reporting(E_ALL);
+    // ini_set('display_errors', 1);
     $connect = mysqli_connect("localhost","root","","web-top-up");
     $thumbnail_query = mysqli_query($connect,"SELECT * FROM `Gambar-thumbnail` WHERE Game_terkait = '".$_GET['games']."'");
     while($row = mysqli_fetch_array($thumbnail_query)){
@@ -69,6 +69,15 @@
       Positioned inside the thumbnail container.
   -->
   <div class="games-description">
+    <p class="text-light ms-3 mt-3">
+      <?php 
+        $games_query = mysqli_query($connect,"SELECT * FROM `Games` WHERE Game_terkait = '".$_GET['games']."'");
+        while($row = mysqli_fetch_array($games_query)){
+          echo $row["Description"];
+        };
+
+      ?> 
+    </p>
     <!-- Description goes here -->
   </div>
 
