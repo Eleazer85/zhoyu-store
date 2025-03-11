@@ -39,8 +39,8 @@
             <a class="nav-link text-light"><b>Voucher</b></a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" role="search" method="get" action="search">
+          <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success text-light" type="submit" id="search-button"><b>Search</b></button>
         </form>
       </div>

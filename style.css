@@ -95,6 +95,7 @@ min-width 1400px (1400px+): 355px game image hieght;
     grid-row: span 1;
     grid-column: span 1;
     border-radius: 20px;
+    min-height:500px;
 }
 
 /* Adjustments for different screen sizes */
@@ -341,4 +342,42 @@ min-width 1400px (1400px+): 355px game image hieght;
     .thumbnail-image .main-catalogue-container .games-product .catalogue-container .catalogue .catalogue-price h6{
         font-size:14px !important;
      }
+}
+
+.admin-login{
+    width:35% !important;
+    border:1px solid black;
+    border-radius:10px;
+}
+
+@media(max-width:1100px){
+    .admin-login{
+        width:50% !important;
+    }
+}
+
+@media(max-width:550px){
+    .admin-login{
+        width:85% !important;
+    }
+}
+
+.searched-item{
+    display: flex;
+    justify-content: space-around;;
+    align-items: center;;
+    margin: 20px auto 0 auto;
+    width:70%;;
+    min-height:100px;
+    border: 1px solid black;
+}
+
+.searched-images{
+    border-radius:10px;
+    width:200px;
+    height:270px;
+}
+
+.searched-description{
+    width:60%;
 }
