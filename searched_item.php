@@ -11,7 +11,7 @@ while($row = mysqli_fetch_array($result)):
 <div class="searched-item">
     <a href="shop?games=<?php echo $row['Game_terkait'];?>"><img src="<?php echo $row['Gambar-game']?>" class="searched-images"></a>
     <div class="searched-description">
-        <a href="shop?games=<?php echo $row['Game_terkait'];?>" class="text-decoration-none"><h1 class="text-dark text-decoration-underline"><?php echo $row["Nama-game"];?></h1></a>
+        <a href="shop?games=<?php echo $row['Game_terkait'];?>" class="text-decoration-none"><h1 class="game-title"><?php echo $row["Nama-game"];?></h1></a>
         <p><?php echo $row["Description"] ?></p>
     </div>
 </div>

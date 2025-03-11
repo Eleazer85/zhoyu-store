@@ -367,17 +367,56 @@ min-width 1400px (1400px+): 355px game image hieght;
     justify-content: space-around;;
     align-items: center;;
     margin: 20px auto 0 auto;
-    width:70%;;
+    width:70%;
     min-height:100px;
     border: 1px solid black;
 }
 
-.searched-images{
+.searched-item .searched-description .game-title{
+    font-size:30px;
+    text-decoration:underline;
+    color:black;
+}
+
+.searched-item .searched-images{
     border-radius:10px;
     width:200px;
     height:270px;
 }
 
-.searched-description{
+.searched-item .searched-description{
     width:60%;
+}
+
+@media(max-width:950px){
+    .searched-item .searched-description .game-title{
+        font-size:25px;
+    }
+
+    .searched-item .searched-images{
+        width:150px;
+        height:220px;
+    }
+}
+
+@media(max-width:670px){
+    .searched-item .searched-images{
+        width:110px;
+        height:170px;
+    }
+
+    .searched-item{
+        width:80%;
+    }
+
+    .searched-item .searched-description .game-title{
+        font-size:20px;
+    }
+}
+
+@media(max-width:470px){
+    .searched-item .searched-images{
+        width:90px;
+        height:140px;
+    }
 }
