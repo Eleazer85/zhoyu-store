@@ -88,6 +88,8 @@
         Uses flexbox to center and align elements.
     -->
   <form method="post" action="testing.php" class="w-100">
+    <input type="hidden" id="selectedCatalogueProduct" name="catalogue_product" value="">
+    <input type="hidden" id="selectedCataloguePrice" name="catalogue_price" value="">
     <div class="games-product">
       <!-- First row of game product listings -->
       <div class="w-100 mt-3"><h3 class="text-light ms-3"> Region Indonesia </h3></div>
@@ -96,8 +98,8 @@
         $catalogue_query = mysqli_query($connect,"SELECT * FROM `Katalog` WHERE Game_terkait = '".$_GET['games']."' ");
         while ($row = mysqli_fetch_array($catalogue_query)):
         ?>
-        <div class="catalogue">
-          <img src="Images/Game-Money/2.png" class="catalogue-image">
+        <div class="catalogue"  product="<?php echo $row['Nominal'].' '.$row['Curency'] ?>" price="<?php echo 'Rp. '.$row['Harga']?>" onclick="selectCatalogue(this)">
+          <img src="<?php echo $row['Gambar'];?>" class="catalogue-image">
           <div class="catalogue-price">
             <h6><?php echo $row['Nominal']." ".$row['Curency']?></h6>
             <h6>Rp. <?php echo $row['Harga'] ?></h6>
@@ -146,6 +148,27 @@
   </div> <!-- End of main-catalogue-container -->
 
 </div> <!-- End of thumbnail-image -->
+
+<script>
+function selectCatalogue(element) {
+    // Get data attributes from clicked container
+    let product = element.getAttribute("product");
+    let price = element.getAttribute("price");
+
+    // Update hidden form fields
+    document.getElementById("selectedCatalogueProduct").value = product;
+    document.getElementById("selectedCataloguePrice").value = price;
+
+    // Highlight the selected catalogue (optional)
+    document.querySelectorAll(".catalogue").forEach(container => {
+        container.style.border = "none"; // Reset border
+    });
+    element.style.border = "2px solid black"; // Highlight selected container
+
+    console.log("Selected Product:", product);  // Debugging
+    console.log("Selected Price:", price);
+}
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
