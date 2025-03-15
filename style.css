@@ -397,6 +397,10 @@ min-width 1400px (1400px+): 355px game image hieght;
         width:150px;
         height:220px;
     }
+
+    .searched-item .searched-description .rating{
+        font-size:20px;
+    }
 }
 
 @media(max-width:670px){
@@ -412,11 +416,30 @@ min-width 1400px (1400px+): 355px game image hieght;
     .searched-item .searched-description .game-title{
         font-size:20px;
     }
+
+    .searched-item .searched-description .games-description{
+        font-size:12px;
+    }
+
+    .searched-item .searched-description .rating{
+        font-size:18px;
+    }
 }
 
 @media(max-width:470px){
     .searched-item .searched-images{
         width:90px;
         height:140px;
+    }
+    .searched-item .searched-description .game-title{
+        font-size:18px;
+    }
+
+    .searched-item .searched-description .games-description{
+        font-size:10px;
+    }
+
+    .searched-item .searched-description .rating{
+        font-size:16px;
     }
 }

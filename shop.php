@@ -9,43 +9,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg bg-theme">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="https://localhost/web-top-up"><img src="Images/logo2.png" width="70" height="50"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="https://localhost/web-top-up"><b>Home</b></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" href="#"><b>All-games</b></a>
-          </li>
-          <!--Disable drop down-->
-          <!-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-theme">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="https://localhost/web-top-up">
+                <img src="Images/logo2.png" width="70" height="50">
             </a>
-            <ul class="dropdown-menu bg-theme">
-              <li><a class="dropdown-item text-light" href="#">Action</a></li>
-              <li><a class="dropdown-item text-light" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item text-light" href="#">Something else here</a></li>
-            </ul>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link text-light"><b>Voucher</b></a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search" method="get" action="search">
-          <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success text-light" type="submit" id="search-button"><b>Search</b></button>
-        </form>
-      </div>
-    </div>
-  </nav>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" href="#"><b>Home</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light"><b>Voucher</b></a>
+                    </li>
+                </ul>
+                
+                <!-- Search Bar -->
+                <form class="d-flex" role="search" method="get" action="search">
+                    <input class="form-control me-2" type="search" name="search"  placeholder="Search">
+                    <button class="btn btn-outline-success text-light" type="submit" id="search-button"><b>Search</b></button>
+                </form>
+            </div>
+        </div>
+    </nav>
 <!-- 
     Thumbnail container that displays a background image.
     It contains the game description and the main catalogue section.
@@ -69,13 +64,15 @@
       Positioned inside the thumbnail container.
   -->
   <div class="games-description">
-    <p class="text-light ms-3 mt-3">
+    <?php 
+      $games_query = mysqli_query($connect,"SELECT * FROM `Games` WHERE Game_terkait = '".$_GET['games']."'");
+      while($row = mysqli_fetch_array($games_query)):
+    ?>
+    <h2 class="text-light ms-3 mt-3"><?php echo $row["Nama-game"];?></h2>
+    <p class="text-light ms-3 mt-2">
       <?php 
-        $games_query = mysqli_query($connect,"SELECT * FROM `Games` WHERE Game_terkait = '".$_GET['games']."'");
-        while($row = mysqli_fetch_array($games_query)){
-          echo $row["Description"];
-        };
-
+        echo $row["Description"];
+        endwhile; 
       ?> 
     </p>
     <!-- Description goes here -->
@@ -90,8 +87,8 @@
         Games-product container that organizes the available game items.
         Uses flexbox to center and align elements.
     -->
+  <form method="post" action="testing.php" class="w-100">
     <div class="games-product">
-
       <!-- First row of game product listings -->
       <div class="w-100 mt-3"><h3 class="text-light ms-3"> Region Indonesia </h3></div>
       <div class="catalogue-container  pb-3">
@@ -144,7 +141,8 @@
       </div> <!-- End of payment-container -->
 
     </div> <!-- End of games-product -->
-          <button class="d-flex justify-content-center align-items-center pesan ps-5 pe-5 m-auto"><p class="text-light">Pesan Sekarang!</p></button>
+          <button class="d-flex justify-content-center align-items-center pesan ps-5 pe-5 m-auto" type="submit"><p class="text-light">Pesan Sekarang!</p></button>
+    </form>
   </div> <!-- End of main-catalogue-container -->
 
 </div> <!-- End of thumbnail-image -->

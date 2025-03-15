@@ -27,7 +27,7 @@
     <nav class="navbar navbar-expand-lg bg-theme">
         <div class="container-fluid">
             <!-- Logo -->
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="https://localhost/web-top-up">
                 <img src="Images/logo2.png" width="70" height="50">
             </a>
             
@@ -69,21 +69,21 @@
         
         <!-- Game Grid - Dynamically loaded with PHP -->
         <div class="games-container pb-5">
-            <?php include 'all-games.php'?>
+            <?php include 'home_game.php'?>
         </div>
     </div>
-    
+
     <!-- Pagination Navigation -->
     <nav aria-label="Page navigation example" class="d-flex justify-content-center">
         <ul class="pagination">
-            <li class="page-item">
+            <!-- <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            </li> -->
+            <li class="page-item"><a class="page-link" href="">1</a></li>
             <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
+                <a class="page-link" href="https://localhost/web-top-up/games?page=2" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>

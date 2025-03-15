@@ -15,32 +15,38 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-theme">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="https://localhost/web-top-up"><img src="Images/logo2.png" width="70" height="50"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active text-light" aria-current="page" href="https://localhost/web-top-up"><b>Home</b></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" href="#"><b>All-games</b></a>
-          </li>
-          </li> -->
-          <li class="nav-item">
-            <a class="nav-link text-light"><b>Voucher</b></a>
-          </li>
-        </ul>
-        <form class="d-flex" role="search" method="get" action="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success text-light" type="submit" id="search-button"><b>Search</b></button>
-        </form>
-      </div>
-    </div>
-  </nav>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg bg-theme">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="https://localhost/web-top-up">
+                <img src="Images/logo2.png" width="70" height="50">
+            </a>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Navigation Links -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active text-light" href="#"><b>Home</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light"><b>Voucher</b></a>
+                    </li>
+                </ul>
+                
+                <!-- Search Bar -->
+                <form class="d-flex" role="search" method="get" action="search">
+                    <input class="form-control me-2" type="search" name="search"  placeholder="Search">
+                    <button class="btn btn-outline-success text-light" type="submit" id="search-button"><b>Search</b></button>
+                </form>
+            </div>
+        </div>
+    </nav>
   <div class="container admin-login mt-5">
     <h1 class="text-center pt-3">Login</h1>
     <form class="pt-3 px-2" method="post" action="admin.php">

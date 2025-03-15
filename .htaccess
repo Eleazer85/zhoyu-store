@@ -3,3 +3,6 @@ RewriteRule ^shop$ shop.php [L]
 
 RewriteEngine On
 RewriteRule ^search$ search.php [L]
+
+RewriteEngine On
+RewriteRule ^games$ all_games.php [L]
