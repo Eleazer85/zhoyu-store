@@ -13,6 +13,16 @@
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Set background gradient for the page */
+        body {
+            min-height:100vh;
+            background-image: linear-gradient(white, #d9d9d9, #ECD1D1, #ffc9c9);
+            background-repeat: no-repeat;
+        }
+    </style>
+
 </head>
 <body>
         <!-- Navigation Bar -->
