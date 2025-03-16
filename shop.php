@@ -1,3 +1,8 @@
+<?php 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,7 +95,39 @@
   <form method="post" action="testing.php" class="w-100">
     <input type="hidden" id="selectedCatalogueProduct" name="catalogue_product" value="">
     <input type="hidden" id="selectedCataloguePrice" name="catalogue_price" value="">
+    <input type="hidden" id="selectedCataloguePayment" name="catalogue_payment" value="">
+    <input type="hidden" id="selectedCatalogueGames" name="catalogue_games" value="<?php echo str_replace("-"," ",$_GET["games"])?>">
     <div class="games-product">
+      <?php
+        $id_query = mysqli_query($connect,"SELECT`id_type` , `server_type`  , `server_options` FROM Games WHERE `Game_terkait` = '".$_GET['games']."'");
+        while($row = mysqli_fetch_array($id_query)):
+      ?>
+      <div class="d-flex justify-content-center align-items-center w-100 mt-3 mb-3">
+        <label for="player_id" class="text-light w-25"><b><?php echo $row['id_type']." : "?></b></label>
+        <input type="text" name="player_id" class="rounded w-50" placeholder="<?php echo $row['id_type']?>">
+      </div>
+      <?php if($row['server_type'] == "input"):?>
+      <div class="d-flex justify-content-center align-items-center w-100 mb-3">
+        <label for="player_id" class="text-light w-25"><b>Server ID : </b></label>
+        <input type="text" name="server" class="rounded w-50" placeholder="Server ID">
+      </div>
+      <?php 
+        elseif($row['server_type'] == "dropdown"):
+          $servers = explode(",",$row['server_options']);
+          $servers_length = count($servers);
+        ?>
+      <div class="d-flex justify-content-center align-items-center w-100 mb-3 ">
+        <label for="player_id" class="text-light w-25"><b>Server ID : </b></label>
+        <select name="server" class="rounded w-50">
+          <?php for($i=0;$i<$servers_length;$i++): ?>
+            <option value="<?php echo $servers[$i];?>"><?php echo $servers[$i];?></option>
+          <?php endfor;?>
+        </select>
+        </div>
+      <?php endif; ?>
+      <?php endwhile; ?>
+    </div>
+    <div class="games-product mt-5">
       <!-- First row of game product listings -->
       <div class="w-100 mt-3"><h3 class="text-light ms-3"> Region Indonesia </h3></div>
       <div class="catalogue-container  pb-3">
@@ -130,10 +167,10 @@
           <!-- Collapsible section containing pricing details -->
           <div class="payment-method collapse" id="payment-method">
             <div class="payment-list">
-              <div class="pay">
+              <div class="pay pe-3" payment="QRIS" onclick="paymentMethod(this)">
                 <img src="Images/qris.png" class="pembayaran">
               </div>
-              <div class="pay">
+              <div class="pay pe-3" payment="BCA" onclick="paymentMethod(this)">
                 <img src="Images/BCA.png" class="pembayaran">
               </div>
               </div>
@@ -167,6 +204,19 @@ function selectCatalogue(element) {
 
     console.log("Selected Product:", product);  // Debugging
     console.log("Selected Price:", price);
+}
+function paymentMethod(element){
+  let payment = element.getAttribute("payment");
+  document.getElementById("selectedCataloguePayment").value = payment
+
+  // Highlight the selected catalogue (optional)
+   document.querySelectorAll(".pay").forEach(container => {
+    container.style.border = "none"; // Reset border
+   });
+
+   element.style.border = "2px solid black"; // Highlight selected container
+
+   console.log("Selected Payment Method:",payment);
 }
 </script>
 

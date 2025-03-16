@@ -1,6 +1,14 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // make a new admin function
 $connect = mysqli_connect("localhost","root","","web-top-up");
+
+// Check connection
+if (!$connect) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 function create_admin($username,$password){
     global $connect;
@@ -10,10 +18,6 @@ function create_admin($username,$password){
     $stmt->bind_param("ss",$username,$hashed_password);
     $stmt->execute();
 };
-
-if ($connect->connect_error) {
-    die("Connection failed: " . $connect->connect_error);
-}
 
 function authenticate($username, $password){
     global $connect;
@@ -48,17 +52,104 @@ function authenticate($username, $password){
     return $verify; //return the result of verification
 };
 
+function createToken(){
+    global $connect;
+    // Generate a secure token
+    $token = bin2hex(random_bytes(32)); // 64-character random string
+    $hashed_token = password_hash($token, PASSWORD_DEFAULT);
+
+    // make a prepare statement
+    $stmt = $connect->prepare("UPDATE admins SET session_token = ? WHERE Username = ?");
+    $stmt->bind_param("ss", $hashed_token, $_POST["username"]);
+    $stmt->execute();
+    $stmt->close();
+
+    // Set a secure cookie with the raw token
+    setcookie("auth_token", $token, [
+        "expires" => time() + 3600,  // Cookie expires in 1 hour
+        "path" => "/",
+        "secure" => false,  //  Change to false for localhost testing
+        "httponly" => true,  // Prevent JavaScript access
+        "samesite" => "Lax"  // Change to Lax to allow redirections
+    ]);            // Generate a secure token
+    $token = bin2hex(random_bytes(32)); // 64-character random string
+    $hashed_token = password_hash($token, PASSWORD_DEFAULT);
+
+    // make a prepare statement
+    $stmt = $connect->prepare("UPDATE admins SET session_token = ? WHERE Username = ?");
+    $stmt->bind_param("ss", $hashed_token, $_POST["username"]);
+    $stmt->execute();
+
+    // Set a secure cookie with the raw token
+    setcookie("auth_token", $token, [
+        "expires" => time() + 3600,  // Cookie expires in 1 hour
+        "path" => "/",
+        "secure" => true,  //  Only accept https
+        "httponly" => true,  // Prevent JavaScript access
+        "samesite" => "Strict"  // Change to Lax to allow redirections
+    ]);
+}
+
+function verifyToken(){
+    global $connect; 
+
+    if (isset($_COOKIE["auth_token"])) {
+        $token = $_COOKIE["auth_token"];
+    } else {
+       return;
+    }
+
+    // Prepare the query
+    $stmt = $connect->prepare("SELECT Username, session_token FROM admins WHERE session_token IS NOT NULL");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $user_found = false;
+    while($row = mysqli_fetch_array($result)){
+        if (password_verify($token, $row["session_token"])) {
+            echo "User verified: " . $row["Username"];
+            $users = $row["Username"];
+            $user_found = true;
+            break;
+        }
+    }
+
+    if($user_found == false){
+        header('Location: https://localhost/web-top-up/login_admin.php ');
+    }else{
+        return [$users,$user_found];
+    }
+}
+
+function cleanExpiredPayments($connect) {
+    $sql = "DELETE FROM payments WHERE expires_at <= NOW()";
+    $connect->query($sql);
+}
+
+
+if(verifyToken() != null && verifyToken()[1]){
+    die("Already logged in");
+}
 
 //for testing purpose
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     $username = $_POST["username"];
     $password = $_POST["password"];
     if(authenticate($username, $password) == true){
-        echo "password match!";
+        if (isset($_POST["remember"]) && $_POST["remember"] == "on") {
+            createToken();
+            echo "Cookie has been set!";
+        } else {
+            echo "logging in without remembering you";
+        };        
     }else{
         header('Location: https://localhost/web-top-up/login_admin.php ');
+        exit;
     };
 } else {
-    echo "Please fill out the form.";
+    header('Location: https://localhost/web-top-up/login_admin.php ');
+    exit;
 };
+
+cleanExpiredPayments($connect);
 ?>
