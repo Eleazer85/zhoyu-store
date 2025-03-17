@@ -104,12 +104,12 @@ ini_set('display_errors', 1);
       ?>
       <div class="d-flex justify-content-center align-items-center w-100 mt-3 mb-3">
         <label for="player_id" class="text-light w-25"><b><?php echo $row['id_type']." : "?></b></label>
-        <input type="text" name="player_id" class="rounded w-50" placeholder="<?php echo $row['id_type']?>">
+        <input type="text" name="player_id" class="rounded w-50" placeholder="<?php echo $row['id_type']?>" required>
       </div>
       <?php if($row['server_type'] == "input"):?>
       <div class="d-flex justify-content-center align-items-center w-100 mb-3">
         <label for="player_id" class="text-light w-25"><b>Server ID : </b></label>
-        <input type="text" name="server" class="rounded w-50" placeholder="Server ID">
+        <input type="text" name="server" class="rounded w-50" placeholder="Server ID" required>
       </div>
       <?php 
         elseif($row['server_type'] == "dropdown"):

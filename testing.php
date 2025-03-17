@@ -17,11 +17,35 @@ if (isset($_POST["catalogue_price"]) && isset($_POST["catalogue_product"]) && is
     $stmt->execute();
     $stmt->close();
 
-    echo $_POST["catalogue_price"]."<br>";
-    echo $_POST["catalogue_product"]."<br>";
-    echo $_POST["catalogue_payment"]."<br>";
-    echo $_POST["catalogue_games"]."<br>";
-    // header("Location: https://wa.me/6287851265092?text=Hello%20there!");
+    $nama_game = urlencode($games);
+    $nominal = urlencode($amount);
+    $pembayaran = urldecode($payment_method);
+    $player_id = urlencode($player_id);
+    $id_pembayaran = urlencode($payment_id);
+
+    if($server != "No server available for this game"){
+        $server = urlencode($server);
+        $message = "Hallo min, saya mau top up ke game : $nama_game%0A" .
+        "ID pembayaran:$id_pembayaran%0A".
+        "Nominal: $nominal,%0A" .
+        "Pembayaran melalui: $pembayaran,%0A" .
+        "ID: $player_id%0A" .
+        "Server: $server";
+    }else{
+        $message = "Hallo min, saya mau top up ke game : $nama_game%0A" .
+        "ID pembayaran:$id_pembayaran%0A".
+        "Nominal: $nominal,%0A" .
+        "Pembayaran melalui: $pembayaran,%0A" .
+        "ID: $player_id%0A";
+    };
+
+    //This is ussed for testing purpose to print out the post values
+    // echo $_POST["catalogue_price"]."<br>";
+    // echo $_POST["catalogue_product"]."<br>";
+    // echo $_POST["catalogue_payment"]."<br>";
+    // echo $_POST["catalogue_games"]."<br>";
+
+    header("Location: https://wa.me/6287851265092?text=$message");
 }else{
     echo "
     <script>

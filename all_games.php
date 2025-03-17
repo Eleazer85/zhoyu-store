@@ -74,7 +74,7 @@
       $mysql_query = automatic_query($game_perPage)[0];
       $query = mysqli_query($connect,$mysql_query);
       if(!query_available($connect,$mysql_query)){
-        die('404 error');
+        die("<h1 class='mx-5 text-center'>404 error</h1>");
       }
   ?>
   <!-- Game List Section -->
