@@ -42,10 +42,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-light" href="#"><b>Home</b></a>
+                        <a class="nav-link active text-light" href="https://localhost/web-top-up"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light"><b>Voucher</b></a>
+                        <a class="nav-link text-light" href="https://localhost/web-top-up/games?page=1"><b>All Games</b></a>
                     </li>
                 </ul>
                 

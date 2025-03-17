@@ -1,3 +1,40 @@
+<?php
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
+
+  // make a new admin function
+  $connect = mysqli_connect("localhost","root","","web-top-up");
+  function verifyToken(){
+    global $connect; 
+
+    if (isset($_COOKIE["auth_token"])) {
+        $token = $_COOKIE["auth_token"];
+    } else {
+       return;
+    }
+
+    // Prepare the query
+    $stmt = $connect->prepare("SELECT Username, session_token FROM admins WHERE session_token IS NOT NULL");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $user_found = false;
+    while($row = mysqli_fetch_array($result)){
+        if (password_verify($token, $row["session_token"])) {
+            $users = $row["Username"];
+            $user_found = true;
+            break;
+        }
+    }
+
+    if($user_found == true){
+      header('Location: https://localhost/web-top-up/admin');
+      exit;
+    }
+  }
+
+  verifyToken();
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,12 +67,12 @@
             
             <!-- Navigation Links -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-light" href="#"><b>Home</b></a>
+                        <a class="nav-link active text-light" href="https://localhost/web-top-up"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light"><b>Voucher</b></a>
+                        <a class="nav-link text-light" href="https://localhost/web-top-up/games?page=1"><b>All Games</b></a>
                     </li>
                 </ul>
                 
@@ -49,7 +86,7 @@
     </nav>
   <div class="container admin-login mt-5">
     <h1 class="text-center pt-3">Login</h1>
-    <form class="pt-3 px-2" method="post" action="admin.php">
+    <form class="pt-3 px-2" method="post" action="admin">
       <!-- Email input -->
       <div data-mdb-input-init class="form-outline mb-3">
         <input type="text" name="username"  id="form2Example1"   class="form-control" />
@@ -72,19 +109,19 @@
           </div>
         </div>
 
-        <div class="col">
-          <!-- Simple link -->
+        <!-- <div class="col">
+           Simple link
           <a href="#!">Forgot password?</a>
-        </div>
+        </div> -->
       </div>
 
       <!-- Submit button -->
-      <div class="w-100 d-flex justify-content-center">
+      <div class="w-100 d-flex justify-content-center mb-3">
         <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block">Sign in</button>
       </div>
 
       <!-- Register buttons -->
-      <div class="text-center">
+      <!-- <div class="text-center">
         <p>Not a member? <a href="#!">Register</a></p>
         <p>or sign up with:</p>
         <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
@@ -102,7 +139,7 @@
         <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-link btn-floating mx-1">
           <i class="fab fa-github"></i>
         </button>
-      </div>
+      </div> -->
     </form>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

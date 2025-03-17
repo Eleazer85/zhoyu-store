@@ -6,3 +6,9 @@ RewriteRule ^search$ search.php [L]
 
 RewriteEngine On
 RewriteRule ^games$ all_games.php [L]
+
+RewriteEngine On
+RewriteRule ^admin$ admin.php [L]
+
+RewriteEngine On
+RewriteRule ^login$ login_admin.php [L]

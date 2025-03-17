@@ -29,12 +29,12 @@ ini_set('display_errors', 1);
             
             <!-- Navigation Links -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active text-light" href="#"><b>Home</b></a>
+                        <a class="nav-link active text-light" href="https://localhost/web-top-up"><b>Home</b></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-light"><b>Voucher</b></a>
+                        <a class="nav-link text-light" href="https://localhost/web-top-up/games?page=1"><b>All Games</b></a>
                     </li>
                 </ul>
                 
@@ -55,6 +55,9 @@ ini_set('display_errors', 1);
     // ini_set('display_errors', 1);
     $connect = mysqli_connect("localhost","root","","web-top-up");
     $thumbnail_query = mysqli_query($connect,"SELECT * FROM `Gambar-thumbnail` WHERE Game_terkait = '".$_GET['games']."'");
+    if(mysqli_num_rows($thumbnail_query) < 1){
+      die("<h1 class='mx-5 text-center'>404 error</h1>");
+    }
     while($row = mysqli_fetch_array($thumbnail_query)){
       $gambar = $row["Gambar"];
     };
