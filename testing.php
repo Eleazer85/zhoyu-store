@@ -10,6 +10,15 @@ if (isset($_POST["catalogue_price"]) && isset($_POST["catalogue_product"]) && is
     $games = $_POST["catalogue_games"];
     $player_id = $_POST["player_id"];
     $server = $_POST["server"] ?? "No server available for this game";
+
+    if (empty($price) || empty($amount) || empty($payment_method) || empty($games) || empty($player_id)) {
+        echo "<script>
+            alert('Mohon isi semua form nya');
+            window.history.back();
+        </script>";
+        die('stop here empty()');
+    }
+
     $payment_id = bin2hex(random_bytes(16)); // 32-character hex
 
     $stmt = $connect->prepare("INSERT INTO `payments` (`payment_id`,`game`,`amount`,`prices`,`payment_method`,`user_id/username`,`server`) VALUES  (?,?,?,?,?,?,?)");
