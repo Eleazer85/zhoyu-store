@@ -193,8 +193,7 @@ min-width 1400px (1400px+): 355px game image hieght;
     background-color: var(--theme);
     border-radius: 30px;
     margin-top: 7%;
-    max-height: 500px;
-    min-height: 300px;
+    min-height: 400px;
     width: 35%;
     border: 2px solid black;
 }
@@ -445,27 +444,50 @@ min-width 1400px (1400px+): 355px game image hieght;
 }
 
 .admin-menu {
-    width: 25%;
+    width: 250px;
     min-height: 95vh;
+    background: #343a40;
+    color: white;
+    transition: width 0.3s ease-in-out;
 }
 
-.admin-config{
-    width:75%;
+.admin-menu.collapsed {
+    position:absolute;
+    width: 60px; /* Smaller width when collapsed */
 }
 
-.admin-config .data-table{
-    width:90%;
-    border:1px solid black;
+.admin-config {
+    min-height: 95vh;
+    transition: margin-left 0.3s ease-in-out;
+    width: calc(100% - 250px);
+}
+
+.admin-content{
+    width:95%;
     margin:0 auto;
 }
 
-.admin-menu .admin-logo{
-    margin-top: 0 auto;
+.admin-menu.collapsed + .admin-config {
+    margin-left: 60px;
+    width: calc(100% - 60px);
 }
 
-.admin-menu .menu{
-    border:1px solid rgb(216, 211, 211) ;
+.menu {
     display: flex;
-    justify-content: center;
-    align-items: center;;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgb(216, 211, 211);
+    cursor: pointer;
+}
+
+.menu svg {
+    transition: transform 0.3s ease-in-out;
+}
+
+.admin-menu.collapsed .menu h1 {
+    display: none; /* Hide text when collapsed */
+}
+
+.admin-pagination{
+    margin:0 auto;
 }

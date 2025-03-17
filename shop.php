@@ -78,11 +78,9 @@ ini_set('display_errors', 1);
     ?>
     <h2 class="text-light ms-3 mt-3"><?php echo $row["Nama-game"];?></h2>
     <p class="text-light ms-3 mt-2">
-      <?php 
-        echo $row["Description"];
-        endwhile; 
-      ?> 
+      <?php echo $row["Description"];?>
     </p>
+    <?php  endwhile; ?> 
     <!-- Description goes here -->
   </div>
 

@@ -2,6 +2,15 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
+session_start(); // Start or resume the session
+
+// Unset and destroy the previous session
+session_unset();  // Unset all session variables
+session_destroy(); // Destroy the session
+
+// Start a new session
+session_start(); // Start a fresh session again
+
 // make a new admin function
 $connect = mysqli_connect("localhost","root","","web-top-up");
 
@@ -51,7 +60,7 @@ function authenticate($username, $password){
     return $verify; //return the result of verification
 };
 
-function createToken(){
+function createToken($remember){
     global $connect;
     // Generate a secure token
     $token = bin2hex(random_bytes(32)); // 64-character random string
@@ -62,14 +71,25 @@ function createToken(){
     $stmt->bind_param("ss", $hashed_token, $_POST["username"]);
     $stmt->execute();
 
-    // Set a secure cookie with the raw token
-    setcookie("auth_token", $token, [
-        "expires" => time() + 3600,  // Cookie expires in 1 hour
-        "path" => "/",
-        "secure" => false,  //  Change to false for localhost testing
-        "httponly" => true,  // Prevent JavaScript access
-        "samesite" => "Lax"  // Change to Lax to allow redirections
-    ]);            // Generate a secure token
+    if($remember == true){
+         // Set a secure cookie with the raw token
+        setcookie("auth_token", $token, [
+            "expires" => time() + 2592000 ,  // Cookie expires in 1 month
+            "path" => "/",
+            "secure" => false,  //  Change to false for localhost testing
+            "httponly" => true,  // Prevent JavaScript access
+            "samesite" => "Lax"  // Change to Lax to allow redirections
+        ]);            // Generate a secure token
+    }else{
+        // Set a secure cookie with the raw token
+        setcookie("auth_token", $token, [
+            "expires" => time() + 3600 ,  // Cookie expires in 1 month
+            "path" => "/",
+            "secure" => false,  //  Change to false for localhost testing
+            "httponly" => true,  // Prevent JavaScript access
+            "samesite" => "Lax"  // Change to Lax to allow redirections
+        ]);            // Generate a secure token
+    }
 }
 
 function verifyToken(){
@@ -113,11 +133,12 @@ function verifyLogin(){
         $password = $_POST["password"];
         if(authenticate($username, $password) == true){
             if (isset($_POST["remember"]) && $_POST["remember"] == "on") {
-                createToken();
+                createToken(true);
                 return true;
                 // echo "Cookie has been set!";
             } else {
-               return true;
+                createToken(false);
+                return true;
             };        
         }else{
             header('Location: https://localhost/web-top-up/login ');
@@ -191,7 +212,9 @@ cleanExpiredPayments($connect);
         </div>
     </nav>
     <div class="d-flex w-100">
-        <div class="bg-dark admin-menu">
+        <!-- Collapsible sidebar-->
+        <div class="bg-dark admin-menu collapsed" id="sidebar">
+        <button id="toggleSidebar" class="btn btn-outline-light w-100">☰</button>
             <a href="https://localhost/web-top-up/admin?page=home">
                 <div class="menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-house" viewBox="0 0 16 16">
@@ -232,47 +255,19 @@ cleanExpiredPayments($connect);
             exit;
         ?>
         <?php elseif($_GET["page"] == "home"):?>
-            <div class="bg-light admin-config d-flex flex-column justify-content-center align-items-center">
-                <h1>Halo, selamat datang <?php echo verifyToken()[0]; ?></h1><br>
-                <p>Ini adalah admin page untuk  menambahkan data ke database <?php echo verifyToken()[0]; ?></p>
+            <div class="bg-light admin-config d-flex flex-column align-items-center">
+                <h1 class="mx-5 mt-5">Admin Dashboard</h1><br>
+                <p class="mx-5">Halo, <?php echo verifyToken()[0]; ?>. Ini adalah admin page untuk  menambahkan data ke database </p>
             </div>
         <?php elseif($_GET["page"] == "games"): ?>
-            <div class="bg-light admin-config">
-                <div class="data-table mt-5">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+            <?php include 'games_tables.php'; ?>
     <?php endif;?>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script>
+    document.getElementById('toggleSidebar').addEventListener('click', function () {
+        document.getElementById('sidebar').classList.toggle('collapsed');
+    });
+  </script>
 </body>
 </html>
