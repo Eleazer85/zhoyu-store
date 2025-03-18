@@ -452,8 +452,7 @@ min-width 1400px (1400px+): 355px game image hieght;
 }
 
 .admin-menu.collapsed {
-    position:absolute;
-    min-height: 110vh;
+    min-height: 95vh;
     width: 60px; /* Smaller width when collapsed */
 }
 

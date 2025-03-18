@@ -2,6 +2,38 @@
 session_start();
 $connect = mysqli_connect("localhost", "root", "", "web-top-up");
 
+function verifyToken(){
+    global $connect; 
+
+    if (isset($_COOKIE["auth_token"])) {
+        $token = $_COOKIE["auth_token"];
+    } else {
+       return;
+    }
+
+    // Prepare the query
+    $stmt = $connect->prepare("SELECT Username, session_token FROM admins WHERE session_token IS NOT NULL");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $user_found = false;
+    while($row = mysqli_fetch_array($result)){
+        if (password_verify($token, $row["session_token"])) {
+            $users = $row["Username"];
+            $user_found = true;
+            break;
+        }
+    }
+
+    if($user_found == false){
+        header('Location: https://localhost/web-top-up/login');
+    }else{
+        return [$users,$user_found];
+    }
+}
+
+verifyToken();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['game_id'])) {
     // Convert game_id to an integer (to prevent SQL injection)
     $game_id = $_POST['game_id']; 

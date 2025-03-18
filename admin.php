@@ -260,7 +260,19 @@ cleanExpiredPayments($connect);
                 <p class="mx-5">Halo, <?php echo verifyToken()[0]; ?>. Ini adalah admin page untuk  menambahkan data ke database </p>
             </div>
         <?php elseif($_GET["page"] == "games"): ?>
-            <?php include 'games_tables.php'; ?>
+            <div class="bg-light admin-config">
+                <?php include 'games_tables.php'; ?>
+                <?php include 'add_game.php'?>
+            </div>
+            <?php elseif($_GET["page"] == "katalog"): ?>
+            <div class="bg-light admin-config">
+            <?php include 'katalog_table.php'; ?>
+            <?php include 'add_katalog.php'; ?>
+            </div>
+            <?php elseif($_GET["page"] == "invoice"): ?>
+                <div class="bg-light admin-config">
+                <?php include 'invoice_list.php'; ?>
+            </div>
     <?php endif;?>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

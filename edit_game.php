@@ -2,6 +2,33 @@
 $connect = new mysqli("localhost", "root", "", "web-top-up");
 session_start(); // Always at the top!
 
+function verifyToken(){
+    global $connect; 
+
+    if (!isset($_COOKIE["auth_token"])) {
+        header('Location: https://localhost/web-top-up/login');
+        exit;
+    }
+
+    $token = $_COOKIE["auth_token"];
+
+    // ✅ Fetch the user where the session_token matches
+    $stmt = $connect->prepare("SELECT Username, session_token FROM admins WHERE session_token IS NOT NULL");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        if (password_verify($token, $row["session_token"])) {
+            return [$row["Username"], true];
+        }
+    }
+
+    // ❌ No user found, redirect
+    header('Location: https://localhost/web-top-up/login');
+    exit;
+}
+verifyToken();
+
 // ✅ Regenerate CSRF token on each page load
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
