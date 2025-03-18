@@ -453,6 +453,7 @@ min-width 1400px (1400px+): 355px game image hieght;
 
 .admin-menu.collapsed {
     position:absolute;
+    min-height: 110vh;
     width: 60px; /* Smaller width when collapsed */
 }
 
@@ -490,4 +491,12 @@ min-width 1400px (1400px+): 355px game image hieght;
 
 .admin-pagination{
     margin:0 auto;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Enables horizontal scroll */
+    white-space: nowrap; /* Prevents text wrapping */
+    border: 1px solid #ddd; /* Optional border */
+    padding: 10px;
 }
