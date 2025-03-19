@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Handle image upload
     if (!empty($_FILES["gambar"]["name"])) {
-        $target_dir = "uploads/katalog/";
+        $target_dir = "Images/Game-Money";
         $imageFileType = strtolower(pathinfo($_FILES["gambar"]["name"], PATHINFO_EXTENSION));
         $newFileName = uniqid() . "." . $imageFileType;
         $target_file = $target_dir . $newFileName;

@@ -89,7 +89,40 @@
             </li>
         </ul>
     </nav>
-    
+    <!-- font-awesome -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <footer class="footer mt-3">
+        <div class="container">
+            <div class="footer-column">
+                <h3>Media Sosial</h3>
+                <ul>
+                    <li><a href="http://www.youtube.com/@bangzhoyu" class="fab fa-youtube" > YouTube</a></li>
+                    <li><a href="http://instagram.com/bangzhoyu"class="fab fa-instagram"> Instagaram</a></li>
+                    <li><a href="http://discord.gg/DNK7kkcxPF" class="fa-brands fa-discord"> Discord</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3></h3>
+                <ul>
+                    <li><a href="http://tiktok.com/@bangzhoyu?_t=ZS-8te79Vo00F5&_r=1" class="fab fa-tiktok"> TikTok</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Kontak</h3>
+                <ul>
+                    <li><a href="#" class="fas fa-envelope"> Emails</a></li>
+                    <li><a href="https://wa.me/c/6287851265092" class="fab fa-whatsapp"> Whatsapp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 MIRICELA.
+    </footer>
+
     <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
