@@ -1,6 +1,33 @@
 <?php
 $connect = mysqli_connect("localhost", "root", "", "web-top-up");
 
+function verifyToken(){
+    global $connect; 
+
+    if (!isset($_COOKIE["auth_token"])) {
+        header('Location: https://localhost/web-top-up/login');
+        exit;
+    }
+
+    $token = $_COOKIE["auth_token"];
+
+    // ✅ Fetch the user where the session_token matches
+    $stmt = $connect->prepare("SELECT Username, session_token FROM admins WHERE session_token IS NOT NULL");
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    while ($row = $result->fetch_assoc()) {
+        if (password_verify($token, $row["session_token"])) {
+            return [$row["Username"], true];
+        }
+    }
+
+    // ❌ No user found, redirect
+    header('Location: https://localhost/web-top-up/login');
+    exit;
+}
+verifyToken();
+
 // Fetch available games (using Game_terkait as the identifier)
 $games_query = mysqli_query($connect, "SELECT `Nama-game`, `Game_terkait` FROM Games");
 $games = [];
@@ -44,11 +71,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($harga > 0 && $nominal > 0 && !empty($curency) && !empty($gambar) && !empty($game_terkait)) {
         $query = "INSERT INTO Katalog (Harga, Nominal, Curency, Gambar, Tipe, Game_terkait) 
                   VALUES ('$harga', '$nominal', '$curency', '$gambar', '$tipe', '$game_terkait')";
-        
-        if (mysqli_query($connect, $query)) {
-            echo "<div class='alert alert-success'>Katalog added successfully!</div>";
-        } else {
-            echo "<div class='alert alert-danger'>Error: " . mysqli_error($connect) . "</div>";
+        try{
+            if (mysqli_query($connect, $query)) {
+                echo "<div class='alert alert-success'>Katalog added successfully!</div>";
+            } else {
+                echo "<div class='alert alert-danger'>Database Error </div>";
+            }
+        } catch(mysqli_sql_exception $e){
+            echo "<div class='alert alert-danger'>Database Error,  kemungkinan isi terlalu panjang </div>";
         }
     } else {
         echo "<div class='alert alert-danger'>All fields are required.</div>";
